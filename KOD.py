@@ -168,7 +168,7 @@ def dosya_gönder():
     name  = "utp"                         
     alias = "" + name                          
     path = "yol/"                          
-    destination = "bkagan0737@gmail.com"                   
+    destination = "temelyigitsari@gmail.com"
     text = "alışveriş listesi"                          
      
     class mail_sender:
@@ -578,7 +578,7 @@ def mail_alma():
             email_from = msg['from']
             email_from = email_from.split("<")
             email_from=str(email_from[1]).replace(">","")
-    if email_from == "bkagan0737@gmail.com":
+    if email_from == "temelyigitsari@gmail.com":
         veri=dta[0][1].split()
         if gecici_veri==str(veri[0].decode('UTF-8')):
             pass
