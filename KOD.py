@@ -11,7 +11,7 @@ import time
 veri2=[]
 tutucu=[]
 def veri_tabanı_olusturma():
-    vt = sql.connect('utp_proje.db')
+    vt = sql.connect('gomulu_proje.db')
     im = vt.cursor()
     sorgu = """CREATE TABLE IF NOT EXISTS gelen_veri
                 (barkod, isim, adet, fiyat, market, adet2, fiyat2, market2, adet3, fiyat3, market3, bitis)"""
@@ -87,7 +87,7 @@ def veri_tabanı_olusturma():
     vt.close()
     veri2.clear()
 def kullanici_karsilastir(tarih):
-    vt = sql.connect('utp_proje2.db')
+    vt = sql.connect('gomulu_proje2.db')
     im = vt.cursor()
     sorgu = """CREATE TABLE IF NOT EXISTS gelen_veri
                 (barkod, isim, adet, fiyat, market, adet2, fiyat2, market2, adet3, fiyat3, market3, bitis)"""
@@ -158,14 +158,14 @@ def kullanici_karsilastir(tarih):
         os.chmod("yol/karsilastirma_listesi.txt",777)
         dosya.write(gönder)
     dosya_gönder()
-    os.remove("utp_proje2.db")
+    os.remove("gomulu_proje2.db")
              
 def dosya_gönder():
     smtp_server = "smtp.gmail.com"                   
     port = 587                            
-    user = "utpproje@gmail.com"                          
+    user = "gomuluproje@gmail.com"
     pwd  = "1q2w3e4rk."                          
-    name  = "utp"                         
+    name  = "gomulu"
     alias = "" + name                          
     path = "yol/"                          
     destination = "temelyigitsari@gmail.com"
@@ -232,7 +232,7 @@ def karsilastir():
     adlar=[]
     barkodlar=[]
     isim=""
-    vt = sql.connect('utp_proje.db')
+    vt = sql.connect('gomulu_proje.db')
     im = vt.cursor()
     sorgu = """CREATE TABLE IF NOT EXISTS gelen_veri
                 (barkod, isim, adet, fiyat, market, adet2, fiyat2, market2, adet3, fiyat3, market3, bitis)"""
@@ -287,7 +287,7 @@ def karsilastir():
     dosya_gönder()        
 
 def veri_silme(bar):
-    vt = sql.connect('utp_proje.db')
+    vt = sql.connect('gomulu_proje.db')
     im = vt.cursor()
     im.execute("SELECT * FROM gelen_veri WHERE barkod= ?",(bar,))
     silinecek=im.fetchall()
@@ -490,7 +490,7 @@ def karsilastirma_icin_okuma(gun=1,ay=1,yıl=2019,gun2=1,ay2=1,yıl2=2019):
         
             
 def ekleme(i,ad2):
-    vt = sql.connect('utp_proje2.db')
+    vt = sql.connect('gomulu_proje2.db')
     im = vt.cursor()
     sorgu = """CREATE TABLE IF NOT EXISTS gelen_veri
                 (barkod, isim, adet, fiyat, market, adet2, fiyat2, market2, adet3, fiyat3, market3, bitis)"""
@@ -566,7 +566,7 @@ def mail_alma():
     with open("gecici_veri.txt","r") as dosya:
         gecici_veri=str(dosya.read())
     msrvr=imaplib.IMAP4_SSL('imap.gmail.com',993)
-    unm="utpproje@gmail.com"
+    unm="gomuluproje@gmail.com"
     psw="1q2w3e4rk."
     msrvr.login(unm,psw)
     stat,cnt=msrvr.select('Inbox')
